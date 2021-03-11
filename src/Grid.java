@@ -32,6 +32,11 @@ public class Grid {
         this.Buildings.put(coordinate, building);
     }
 
+
+    public void add_antenna(Antenna antenna){
+        this.Antenna_List.add(antenna);
+    }
+
     public void add_antenna(Coordinate coordinate, Antenna antenna){
         this.Antenna_List.add(antenna);
         this.Antennas.put(coordinate, antenna);
