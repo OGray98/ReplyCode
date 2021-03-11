@@ -5,6 +5,7 @@ public class Score {
     }
 
     public static int manDistance(Coordinate a, Coordinate b){
-        return a.getX()-b.getX() + a.getY()+b.getY();
+        int d = a.getX()-b.getX() + a.getY()+b.getY();
+        return d>=0 ? d : -d;
     }
 }
