@@ -68,7 +68,7 @@ public class Grid {
         });
     }
 
-    private HashMap getAntenna(){
+    public HashMap<Coordinate, Antenna> getAntenna(){
         return Antennas;
     }
 
