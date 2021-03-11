@@ -68,4 +68,8 @@ public class Grid {
         });
     }
 
+    private HashMap getAntenna(){
+        return Antennas;
+    }
+
 }
