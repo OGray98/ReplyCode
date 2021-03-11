@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
@@ -37,5 +38,17 @@ public class Grid {
         this.Antennas.put(coordinate, antenna);
     }
 
+    public void setPositionAntenna(Coordinate newCoord, Coordinate oldCoord) {
+        this.Antennas.put(newCoord, this.Antennas.get(oldCoord));
+        this.Antennas.remove(oldCoord);
+    }
+
+    public void putAntennas() {
+        this.Antenna_List.sort((o1, o2) -> Integer.compare(o2.getConnSpeed(), o1.getConnSpeed()));
+
+        this.Antenna_List.forEach( antenna -> {
+
+        });
+    }
 
 }
