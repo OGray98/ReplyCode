@@ -46,6 +46,7 @@ public class ReadFile {
                 Antenna antenna = new Antenna(Integer.parseInt(lineAntenne[0]), Integer.parseInt(lineAntenne[1]), j);
                 grid.add_antenna(antenna);
             }
+            line = reader.readLine();
             //END
 
         }
@@ -84,7 +85,7 @@ public class ReadFile {
         return reward;
     }
 
-    
+
 
 
 }
