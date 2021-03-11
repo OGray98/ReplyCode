@@ -6,7 +6,6 @@ public class Grid {
 
     private List<Coordinate> Coordinates;
 
-    private List<Building> Building_List;
     private List<Antenna> Antenna_List;
 
     private HashMap<Coordinate, Building> Buildings;
@@ -22,7 +21,6 @@ public class Grid {
         }
 
         this.Coordinates = Coordinates;
-        this.Building_List = new ArrayList<>();
         this.Antenna_List = new ArrayList<>();
 
         this.Buildings =  new HashMap<>();
@@ -31,7 +29,6 @@ public class Grid {
     }
 
     public void add_building(Coordinate coordinate, Building building){
-        this.Building_List.add(building);
         this.Buildings.put(coordinate, building);
     }
 
