@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Grid {
 
@@ -50,9 +47,24 @@ public class Grid {
 
     public void putAntennas() {
         this.Antenna_List.sort((o1, o2) -> Integer.compare(o2.getConnSpeed(), o1.getConnSpeed()));
-
+        ArrayList<Coordinate> occupied = new ArrayList<>();
         this.Antenna_List.forEach( antenna -> {
+            Coordinate bestBuilding = new Coordinate(0,0);
 
+            for (Map.Entry<Coordinate, Building> entry : Buildings.entrySet()) {
+                if(Buildings.containsKey(bestBuilding)) {
+                    if(entry.getValue().getConnection_Speed_Weight() > Buildings.get(bestBuilding).getConnection_Speed_Weight()
+                            && !occupied.contains(entry.getKey())) {
+                        bestBuilding = entry.getKey();
+                    }
+                }
+                else {
+                    bestBuilding = entry.getKey();
+                }
+            }
+
+            occupied.add(bestBuilding);
+            this.Antennas.put(bestBuilding, antenna);
         });
     }
 
