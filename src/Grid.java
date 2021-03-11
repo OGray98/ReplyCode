@@ -4,7 +4,9 @@ import java.util.List;
 
 public class Grid {
 
-    private List<Coordinate> Coordinates;
+    private int Width;
+    private int Height;
+    private Coordinate[][] Coordinates;
 
     private List<Antenna> Antenna_List;
 
@@ -12,15 +14,11 @@ public class Grid {
     private HashMap<Coordinate, Antenna> Antennas;
 
     public Grid(int W, int H){
-        List<Coordinate> Coordinates = new ArrayList<>();
 
-        for(int i = 0; i < W; i++){
-            for(int j = 0; i < H; i++){
-                Coordinates.add(new Coordinate(i, j));
-            }
-        }
+        this.Width = W;
+        this.Height = H;
+        this.Coordinates = new Coordinate[W][H];
 
-        this.Coordinates = Coordinates;
         this.Antenna_List = new ArrayList<>();
 
         this.Buildings =  new HashMap<>();
@@ -32,7 +30,6 @@ public class Grid {
         this.Buildings.put(coordinate, building);
     }
 
-
     public void add_antenna(Antenna antenna){
         this.Antenna_List.add(antenna);
     }
@@ -40,6 +37,36 @@ public class Grid {
     public void add_antenna(Coordinate coordinate, Antenna antenna){
         this.Antenna_List.add(antenna);
         this.Antennas.put(coordinate, antenna);
+    }
+
+
+    // All neighborhodd with equal or less manhattan field distance
+    public ArrayList<Coordinate> neighborhood (Coordinate c, int range){
+        int coordinateX = c.getX();
+        int coordinateY = c.getY();
+        ArrayList<Coordinate> coordinates = new ArrayList<>();
+
+        for(int i = 0; i < range; i++){
+            for(int j = 0; j < range; j++){
+                int x1 = coordinateX + i;
+                int y1 = coordinateY + j;
+
+                if (x1 < this.Width && y1 < this.Height){
+                    coordinates.add(this.Coordinates[x1][y1]);
+                }
+
+                int x2 = coordinateX - i;
+                int y2 = coordinateY - j;
+                if(x1 > 0 && y2 > 0){
+                    coordinates.add(this.Coordinates[x2][y2]);
+                }
+            }
+        }
+
+        return coordinates;
+
+
+
     }
 
 
